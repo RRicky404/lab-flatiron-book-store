@@ -1,4 +1,4 @@
-const bookStore = {
+const bookstore = {
     name: 'Flatbooks Technical Books',
     books: [
         {
@@ -45,3 +45,32 @@ const bookStore = {
 
 // Write your code here!
 
+const bookStoreTitle = document.getElementById("header");
+bookStoreTitle.textContent = bookstore.name;
+
+// Get the book list container
+const bookList = document.getElementById("book-list");
+
+// Loop through and render each book
+bookstore.books.forEach(book => {
+  const bookContainer = document.createElement("li");
+
+  const bookTitle = document.createElement("h3");
+  bookTitle.textContent = book.title;
+
+  const bookAuthor = document.createElement("p");
+  bookAuthor.textContent = `by ${book.author}`;
+
+  const bookImage = document.createElement("img");
+  bookImage.src = book.imageUrl;
+
+  bookContainer.appendChild(bookTitle);
+  bookContainer.appendChild(bookAuthor);
+  bookContainer.appendChild(bookImage);
+
+  bookList.appendChild(bookContainer);
+});
+
+// Bonus: Remove unwanted element
+const deleteMe = document.getElementById("delete-this");
+if (deleteMe) deleteMe.remove();
